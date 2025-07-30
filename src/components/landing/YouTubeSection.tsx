@@ -7,7 +7,7 @@ export const YouTubeSection = () => {
   const stats = [
     { icon: Users, label: "Subscribers", value: "3.6K+" },
     { icon: Video, label: "Videos", value: "460+" },
-    { icon: Play, label: "Views", value: "Not available" },
+    { icon: Play, label: "Views", value: "160K+" },
   ];
 
   return (
