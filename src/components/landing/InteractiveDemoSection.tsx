@@ -76,17 +76,19 @@ export const InteractiveDemoSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <Card 
-                {...cardProps}
-                className="p-8 bg-surface-dark border-gray-3 demo-border-glow relative"
-              >
+              <Card className="p-8 bg-surface-dark border-gray-3 demo-border-glow relative">
                 <div 
-                  className="spotlight-overlay"
-                  style={{
-                    '--x': `${hoverState.x}%`,
-                    '--y': `${hoverState.y}%`,
-                  } as React.CSSProperties}
-                />
+                  {...cardProps}
+                  className="absolute inset-0 rounded-lg pointer-events-none"
+                >
+                  <div 
+                    className="spotlight-overlay"
+                    style={{
+                      '--x': `${hoverState.x}%`,
+                      '--y': `${hoverState.y}%`,
+                    } as React.CSSProperties}
+                  />
+                </div>
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-sm text-muted-foreground">
                     Question {currentQuestion + 1} of {sampleQuestions.length}

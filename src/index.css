@@ -144,8 +144,8 @@ All colors MUST be HSL.
   }
 
   .demo-border-glow {
-    --section-primary: hsl(45 93% 47% / 0.8);
-    --section-secondary: hsl(0 84% 60% / 0.6);
+    --section-primary: hsl(252 83% 68% / 0.8);
+    --section-secondary: hsl(252 83% 78% / 0.6);
   }
 
   .newsletter-border-glow {
