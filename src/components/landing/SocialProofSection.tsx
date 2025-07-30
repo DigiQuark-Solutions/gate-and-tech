@@ -20,7 +20,7 @@ export const SocialProofSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="text-center py-8"
         >
           <p className="text-sm text-muted-foreground mb-8">
             Trusted by leading coaching institutes
