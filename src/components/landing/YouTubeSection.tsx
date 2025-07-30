@@ -11,7 +11,7 @@ export const YouTubeSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-surface-light">
+    <section className="py-12 bg-surface-dark border-y border-gray-3 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
