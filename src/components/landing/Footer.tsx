@@ -118,12 +118,12 @@ export const Footer = () => {
         delay: 0.4
       }}>
           <p className="text-muted-foreground text-sm">
-            © 2025 <span className="font-semibold">Focused Growth EdTech Pvt Ltd</span>. All rights reserved.
+            © 2025 <span className="font-semibold">GATE And Tech</span>. All rights reserved.
           </p>
           
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>Follow us</span>
-            <span className="underline-animate">@FocusedGrowthEdu</span>
+            <span className="underline-animate">@GATEAndTech</span>
           </div>
         </motion.div>
       </div>
