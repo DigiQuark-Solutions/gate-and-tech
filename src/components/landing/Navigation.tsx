@@ -41,6 +41,11 @@ export const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
+            <img 
+              src="/lovable-uploads/baf5ff3e-9fd8-4988-a021-a8152daba729.png" 
+              alt="GATE And Tech Logo" 
+              className="h-8 w-8 mr-3"
+            />
             <span className="text-2xl font-black gradient-text">GATE And Tech</span>
           </motion.div>
 
