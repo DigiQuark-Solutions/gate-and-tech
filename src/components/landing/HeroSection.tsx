@@ -112,7 +112,7 @@ export const HeroSection = () => {
               className="hero-border-glow rounded-2xl overflow-hidden relative"
             >
               <div 
-                className="spotlight-overlay"
+                className="spotlight-overlay pointer-events-none"
                 style={{
                   '--x': `${hoverState.x}%`,
                   '--y': `${hoverState.y}%`,
