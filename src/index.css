@@ -136,21 +136,29 @@ All colors MUST be HSL.
   .hero-border-glow {
     --section-primary: hsl(252 83% 68% / 0.8);
     --section-secondary: hsl(252 83% 78% / 0.6);
+    position: relative;
+    isolation: isolate;
   }
 
   .features-border-glow {
     --section-primary: hsl(158 64% 52% / 0.8);
     --section-secondary: hsl(142 71% 45% / 0.6);
+    position: relative;
+    isolation: isolate;
   }
 
   .demo-border-glow {
     --section-primary: hsl(252 83% 68% / 0.8);
     --section-secondary: hsl(252 83% 78% / 0.6);
+    position: relative;
+    isolation: isolate;
   }
 
   .newsletter-border-glow {
     --section-primary: hsl(252 83% 68% / 0.8);
     --section-secondary: hsl(252 83% 78% / 0.6);
+    position: relative;
+    isolation: isolate;
   }
 
   .hero-border-glow:hover::before,
