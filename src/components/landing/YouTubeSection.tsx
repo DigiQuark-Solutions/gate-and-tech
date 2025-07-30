@@ -45,10 +45,11 @@ export const YouTubeSection = () => {
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/videoseries?list=UU_YOUR_CHANNEL_ID"
-                  title="GATE And Tech YouTube Channel"
+                  src="https://www.youtube.com/embed/mRfDHQeZtlo?si=4l2fmGXCabNDwemo"
+                  title="YouTube video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                   className="w-full h-full"
                 />
