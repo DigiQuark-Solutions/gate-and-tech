@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, Send, CheckCircle } from "lucide-react";
+import { useCardHover } from "@/hooks/use-card-hover";
 
 export const FinalCTASection = () => {
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { cardProps, hoverState } = useCardHover();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +35,17 @@ export const FinalCTASection = () => {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="bg-gradient-to-br from-primary/10 via-background to-primary/5 border-primary/20 p-8 md:p-12 rounded-2xl glow-border">
+           <Card 
+             {...cardProps}
+             className="bg-gradient-to-br from-primary/10 via-background to-primary/5 border-primary/20 p-8 md:p-12 rounded-2xl newsletter-border-glow relative"
+           >
+             <div 
+               className="spotlight-overlay"
+               style={{
+                 '--x': `${hoverState.x}%`,
+                 '--y': `${hoverState.y}%`,
+               } as React.CSSProperties}
+             />
             <div className="text-center mb-8">
               <motion.div
                 className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-6"

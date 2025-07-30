@@ -110,46 +110,66 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Advanced Glowing Border Animation */
-  .glow-border {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  
-  .glow-border::before {
+  /* Section-Specific Border Glows */
+  .hero-border-glow::before,
+  .features-border-glow::before,
+  .faq-border-glow::before,
+  .newsletter-border-glow::before {
     content: '';
     position: absolute;
-    inset: 0;
-    padding: 2px;
-    background: linear-gradient(45deg, 
+    inset: -2px;
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
       transparent,
-      hsl(var(--glow-primary) / 0.8), 
-      hsl(var(--glow-secondary) / 0.9), 
-      hsl(var(--primary-light) / 0.7),
+      var(--section-primary),
       transparent,
-      hsl(var(--glow-primary) / 0.8)
+      var(--section-secondary),
+      transparent
     );
-    background-size: 400% 400%;
     border-radius: inherit;
     opacity: 0;
-    animation: glow-sweep 4s linear infinite;
-    transition: opacity var(--transition-smooth);
+    transition: opacity 0.3s ease;
     z-index: -1;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
+    animation: spotlight-border 2s linear infinite;
   }
-  
-  .glow-border.animate::before {
+
+  .hero-border-glow {
+    --section-primary: hsl(252 83% 68% / 0.8);
+    --section-secondary: hsl(252 83% 78% / 0.6);
+  }
+
+  .features-border-glow {
+    --section-primary: hsl(158 64% 52% / 0.8);
+    --section-secondary: hsl(142 71% 45% / 0.6);
+  }
+
+  .faq-border-glow {
+    --section-primary: hsl(45 93% 47% / 0.8);
+    --section-secondary: hsl(0 84% 60% / 0.6);
+  }
+
+  .newsletter-border-glow {
+    --section-primary: hsl(252 83% 68% / 0.8);
+    --section-secondary: hsl(252 83% 78% / 0.6);
+  }
+
+  .hero-border-glow:hover::before,
+  .features-border-glow:hover::before,
+  .faq-border-glow:hover::before,
+  .newsletter-border-glow:hover::before {
     opacity: 1;
   }
-  
-  .glow-border > * {
-    position: relative;
-    z-index: 1;
+
+  .hero-border-glow::after,
+  .features-border-glow::after,
+  .faq-border-glow::after,
+  .newsletter-border-glow::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: inherit;
     border-radius: inherit;
+    z-index: -1;
   }
   
   /* Marquee Animation */

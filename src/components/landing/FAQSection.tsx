@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useCardHover } from "@/hooks/use-card-hover";
 
 const faqs = [
   {
@@ -34,6 +35,8 @@ const faqs = [
 ];
 
 export const FAQSection = () => {
+  const { cardProps, hoverState } = useCardHover();
+  
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -69,9 +72,17 @@ export const FAQSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <AccordionItem 
+                  {...cardProps}
                   value={`item-${index}`}
-                  className="bg-surface-dark border border-gray-3 rounded-lg px-6 data-[state=open]:border-primary/50 transition-colors duration-200"
+                  className="bg-surface-dark border border-gray-3 rounded-lg px-6 data-[state=open]:border-primary/50 transition-colors duration-200 faq-border-glow relative"
                 >
+                  <div 
+                    className="spotlight-overlay"
+                    style={{
+                      '--x': `${hoverState.x}%`,
+                      '--y': `${hoverState.y}%`,
+                    } as React.CSSProperties}
+                  />
                   <AccordionTrigger className="text-left text-lg font-semibold hover:text-primary transition-colors duration-200 py-6">
                     {faq.question}
                   </AccordionTrigger>

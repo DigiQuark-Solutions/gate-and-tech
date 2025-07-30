@@ -46,7 +46,7 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
     >
       <Card 
         {...cardProps}
-        className="spotlight-card glow-border overflow-hidden bg-transparent border-0 p-0 group"
+        className="spotlight-card features-border-glow overflow-hidden bg-transparent border-0 p-0 group relative"
         style={{
           ...cardProps.style,
           '--x': `${hoverState.x}%`,
@@ -90,20 +90,6 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
             Feature {index + 1}
           </motion.div>
           
-          {/* Subtle scanning line effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent rounded-2xl"
-            animate={{
-              x: ['-100%', '100%'],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatDelay: 2,
-              ease: "easeInOut"
-            }}
-            style={{ width: '30%' }}
-          />
         </div>
       </Card>
     </motion.div>

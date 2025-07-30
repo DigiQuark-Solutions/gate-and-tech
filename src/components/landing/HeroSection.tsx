@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import heroImage from "@/assets/hero-dashboard.jpg";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useCardHover } from "@/hooks/use-card-hover";
 
 export const HeroSection = () => {
   const { ref: sectionRef } = useScrollAnimation();
+  const { cardProps, hoverState } = useCardHover();
 
   return (
     <motion.section 
@@ -105,7 +107,17 @@ export const HeroSection = () => {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="relative"
           >
-            <div className="glow-border rounded-2xl overflow-hidden">
+            <div 
+              {...cardProps}
+              className="hero-border-glow rounded-2xl overflow-hidden relative"
+            >
+              <div 
+                className="spotlight-overlay"
+                style={{
+                  '--x': `${hoverState.x}%`,
+                  '--y': `${hoverState.y}%`,
+                } as React.CSSProperties}
+              />
               <motion.img
                 src={heroImage}
                 alt="Dashboard showing exam simulation interface with analytics and progress tracking"
