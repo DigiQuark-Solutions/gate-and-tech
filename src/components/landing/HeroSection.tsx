@@ -2,12 +2,50 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import heroImage from "@/assets/hero-dashboard.jpg";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export const HeroSection = () => {
+  const { ref: sectionRef } = useScrollAnimation();
+
   return (
-    <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+    <motion.section 
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center bg-background overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      {/* Background gradient with animation */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" 
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      />
+      
+      {/* Animated background particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/20 rounded-full"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${30 + i * 10}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.4,
+            }}
+          />
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -115,6 +153,6 @@ export const HeroSection = () => {
           />
         </motion.div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 };

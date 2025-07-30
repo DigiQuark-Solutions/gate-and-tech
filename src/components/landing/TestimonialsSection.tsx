@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Star, TrendingUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const testimonials = [
   {
@@ -36,6 +37,7 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { ref: sectionRef } = useScrollAnimation();
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -48,7 +50,31 @@ export const TestimonialsSection = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-background">
+    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
+      {/* Background floating elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+            style={{
+              left: `${10 + i * 12}%`,
+              top: `${20 + (i % 3) * 20}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + i * 0.3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          />
+        ))}
+      </div>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -68,13 +94,35 @@ export const TestimonialsSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Main testimonial card */}
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-            >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ 
+                  opacity: 0, 
+                  x: 100, 
+                  scale: 0.9,
+                  rotateY: -15
+                }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0, 
+                  scale: 1,
+                  rotateY: 0
+                }}
+                exit={{ 
+                  opacity: 0, 
+                  x: -100, 
+                  scale: 0.9,
+                  rotateY: 15
+                }}
+                transition={{ 
+                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20
+                }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
               <Card className="bg-white text-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border-0">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   {/* Avatar and Info */}
@@ -140,19 +188,25 @@ export const TestimonialsSection = () => {
                   </motion.div>
                 )}
               </Card>
-            </motion.div>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Navigation */}
             <div className="flex items-center justify-between mt-8">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={prevTestimonial}
-                className="border-gray-3 hover:bg-surface-dark"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ChevronLeft className="w-5 h-5 mr-2" />
-                Previous
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={prevTestimonial}
+                  className="border-gray-3 hover:bg-surface-dark transition-all duration-300"
+                >
+                  <ChevronLeft className="w-5 h-5 mr-2" />
+                  Previous
+                </Button>
+              </motion.div>
 
               {/* Dots indicator */}
               <div className="flex gap-2">
@@ -169,15 +223,20 @@ export const TestimonialsSection = () => {
                 ))}
               </div>
 
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={nextTestimonial}
-                className="border-gray-3 hover:bg-surface-dark"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Next
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={nextTestimonial}
+                  className="border-gray-3 hover:bg-surface-dark transition-all duration-300"
+                >
+                  Next
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Button>
+              </motion.div>
             </div>
           </div>
         </div>
