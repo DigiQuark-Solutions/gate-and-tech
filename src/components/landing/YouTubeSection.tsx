@@ -5,9 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const YouTubeSection = () => {
   const stats = [
-    { icon: Users, label: "Subscribers", value: "10K+" },
-    { icon: Video, label: "Videos", value: "100+" },
-    { icon: Play, label: "Views", value: "500K+" },
+    { icon: Users, label: "Subscribers", value: "3.6K+" },
+    { icon: Video, label: "Videos", value: "460+" },
+    { icon: Play, label: "Views", value: "Not available" },
   ];
 
   return (
@@ -28,7 +28,9 @@ export const YouTubeSection = () => {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Join thousands of GATE aspirants on our YouTube channel for free tutorials, 
-              tips, and comprehensive preparation strategies.
+              tips and comprehensive preparation strategies. GATE And Tech is a YouTube channel 
+              dedicated to technology and engineering topics—ideal for candidates preparing 
+              for the GATE exam or anyone interested in cutting‑edge tech.
             </p>
           </motion.div>
 
@@ -98,21 +100,22 @@ export const YouTubeSection = () => {
                   Free GATE Preparation Content
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Our YouTube channel offers comprehensive tutorials, solving strategies, 
-                  previous year questions, and expert tips to help you crack GATE with confidence. 
-                  Subscribe for weekly updates and join our growing community of successful students.
+                  Our channel offers comprehensive tutorials, step‑by‑step solving strategies, 
+                  discussions of previous year questions and expert tips to help you crack GATE confidently.
                 </p>
               </div>
 
               {/* Channel Features */}
-              <div className="space-y-3">
-                {[
-                  "Weekly new video uploads",
-                  "Topic-wise detailed explanations",
-                  "Previous year question solutions",
-                  "Study tips and strategies",
-                  "Live doubt solving sessions"
-                ].map((feature, index) => (
+              <div className="space-y-4 mb-6">
+                <h4 className="text-lg font-medium text-foreground">What you'll get</h4>
+                <div className="space-y-3">
+                  {[
+                    "Weekly new video uploads",
+                    "Topic‑wise detailed explanations",
+                    "Solutions to previous year questions",
+                    "Study tips and strategies",
+                    "Live doubt‑solving sessions"
+                  ].map((feature, index) => (
                   <motion.div
                     key={feature}
                     className="flex items-center gap-3"
@@ -124,7 +127,11 @@ export const YouTubeSection = () => {
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="text-muted-foreground">{feature}</span>
                   </motion.div>
-                ))}
+                  ))}
+                </div>
+                <p className="text-muted-foreground text-sm">
+                  Subscribe to the channel to stay updated and join a growing community of successful students.
+                </p>
               </div>
 
               {/* CTA Button */}
