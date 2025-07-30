@@ -126,7 +126,7 @@ export const TestimonialsSection = () => {
                 style={{ transformStyle: "preserve-3d" }}
               >
                <Card 
-                 className="glass-strong text-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border-0"
+                 className="glass-strong text-white p-8 md:p-12 rounded-2xl shadow-2xl border-0"
                >
                 <div className="relative z-10">
                 <div className="flex flex-col md:flex-row items-start gap-8">
@@ -140,7 +140,7 @@ export const TestimonialsSection = () => {
                       {currentTestimonial.name}
                     </h4>
                     
-                    <p className="text-gray-600 text-sm mb-3">
+                    <p className="text-gray-300 text-sm mb-3">
                       {currentTestimonial.result}
                     </p>
                     
@@ -164,7 +164,7 @@ export const TestimonialsSection = () => {
                       ))}
                     </div>
                     
-                    <blockquote className="text-xl md:text-2xl leading-relaxed text-gray-800 italic">
+                    <blockquote className="text-xl md:text-2xl leading-relaxed text-white italic">
                       "{currentTestimonial.quote}"
                     </blockquote>
                   </div>
@@ -173,16 +173,16 @@ export const TestimonialsSection = () => {
                 {/* Improvement Progress Bar */}
                 {currentTestimonial.improvement !== "Mentor" && (
                   <motion.div
-                    className="mt-8 pt-6 border-t border-gray-200"
+                    className="mt-8 pt-6 border-t border-gray-400"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-600">Percentile Improvement</span>
+                      <span className="text-sm text-gray-300">Percentile Improvement</span>
                       <span className="text-sm font-semibold text-success">{currentTestimonial.improvement}</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gray-600 rounded-full h-2">
                       <motion.div
                         className="bg-success h-2 rounded-full"
                         initial={{ width: 0 }}
