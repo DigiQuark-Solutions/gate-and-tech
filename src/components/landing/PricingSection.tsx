@@ -82,9 +82,9 @@ export const PricingSection = () => {
               >
                 <Card 
                   {...cardProps}
-                  className={`spotlight-card p-8 h-full relative overflow-hidden ${
+                  className={`spotlight-card glass-card p-8 h-full relative overflow-hidden ${
                     plan.popular 
-                      ? "border-primary shadow-xl shadow-primary/20 glow-border" 
+                      ? "border-primary shadow-xl shadow-primary/20" 
                       : "border-gray-3"
                   }`}
                   style={{

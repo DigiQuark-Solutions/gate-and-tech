@@ -37,10 +37,10 @@ export const FinalCTASection = () => {
         >
            <Card 
              {...cardProps}
-             className="bg-gradient-to-br from-primary/10 via-background to-primary/5 border-primary/20 p-8 md:p-12 rounded-2xl newsletter-border-glow relative"
+             className="glass-strong p-8 md:p-12 rounded-2xl newsletter-border-glow relative"
            >
              <div 
-               className="spotlight-overlay"
+               className="spotlight-overlay pointer-events-none"
                style={{
                  '--x': `${hoverState.x}%`,
                  '--y': `${hoverState.y}%`,

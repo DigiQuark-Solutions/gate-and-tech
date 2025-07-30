@@ -78,7 +78,7 @@ export const InteractiveDemoSection = () => {
             >
               <Card 
                 {...cardProps}
-                className="p-8 bg-surface-dark border-gray-3 demo-border-glow relative"
+                className="p-8 glass-card demo-border-glow relative"
               >
                 <div 
                   className="spotlight-overlay pointer-events-none"
@@ -168,7 +168,7 @@ export const InteractiveDemoSection = () => {
               </div>
               
               <motion.div
-                className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold"
+                className="absolute top-4 right-4 glass-strong text-white px-3 py-1 rounded-full text-sm font-semibold border border-primary/30"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >

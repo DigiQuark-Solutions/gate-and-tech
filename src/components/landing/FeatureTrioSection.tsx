@@ -46,7 +46,7 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
     >
       <Card 
         {...cardProps}
-        className="spotlight-card features-border-glow overflow-hidden bg-transparent border-0 p-0 group relative"
+        className="spotlight-card features-border-glow glass-card overflow-hidden bg-transparent border-0 p-0 group relative"
         style={{
           ...cardProps.style,
           '--x': `${hoverState.x}%`,
@@ -72,9 +72,8 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
             transition={{ duration: 0.8, delay: 0.4 }}
           />
           
-          {/* Floating badge with physics */}
           <motion.div
-            className="absolute top-4 left-4 bg-surface-dark-1/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold border border-primary/30"
+            className="absolute top-4 left-4 glass-dark text-white px-3 py-1 rounded-full text-sm font-semibold border border-primary/30"
             animate={{ 
               y: [0, -8, 0],
               rotate: [0, 2, -2, 0] 

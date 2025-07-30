@@ -129,7 +129,7 @@ export const HeroSection = () => {
             
             {/* Floating elements */}
             <motion.div
-              className="absolute -top-4 -right-4 bg-success text-white px-4 py-2 rounded-full font-semibold shadow-lg"
+              className="absolute -top-4 -right-4 glass-strong text-white px-4 py-2 rounded-full font-semibold shadow-lg border border-success/30"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -137,7 +137,7 @@ export const HeroSection = () => {
             </motion.div>
             
             <motion.div
-              className="absolute -bottom-4 -left-4 bg-primary text-white px-4 py-2 rounded-full font-semibold shadow-lg"
+              className="absolute -bottom-4 -left-4 glass-strong text-white px-4 py-2 rounded-full font-semibold shadow-lg border border-primary/30"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             >

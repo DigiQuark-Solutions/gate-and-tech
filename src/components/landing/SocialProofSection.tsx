@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Star, TrendingUp, Users, Target } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const partners = [
@@ -52,7 +53,7 @@ export const SocialProofSection = () => {
               type: "spring",
               stiffness: 100
             }}
-            className="bg-primary/10 border border-primary/20 rounded-full px-6 py-3 inline-flex items-center gap-3"
+            className="glass-card border border-primary/20 rounded-full px-6 py-3 inline-flex items-center gap-3"
           >
             <motion.div 
               className="w-3 h-3 bg-success rounded-full"
