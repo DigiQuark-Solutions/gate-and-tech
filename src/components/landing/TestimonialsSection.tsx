@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Star, TrendingUp } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useCardHover } from "@/hooks/use-card-hover";
 
 const testimonials = [
   {
@@ -38,6 +39,7 @@ const testimonials = [
 export const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { ref: sectionRef } = useScrollAnimation();
+  const { cardProps, hoverState } = useCardHover();
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -123,7 +125,17 @@ export const TestimonialsSection = () => {
                 }}
                 style={{ transformStyle: "preserve-3d" }}
               >
-              <Card className="bg-white text-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border-0">
+              <Card 
+                {...cardProps}
+                className="spotlight-card bg-white text-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border-0"
+                style={{
+                  ...cardProps.style,
+                  '--x': `${hoverState.x}%`,
+                  '--y': `${hoverState.y}%`,
+                } as React.CSSProperties}
+              >
+                 <div className="spotlight-overlay" />
+                <div className="relative z-10">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   {/* Avatar and Info */}
                   <div className="flex flex-col items-center text-center min-w-fit">
@@ -185,9 +197,10 @@ export const TestimonialsSection = () => {
                         transition={{ duration: 1.5, delay: 0.5 }}
                       />
                     </div>
-                  </motion.div>
-                )}
-              </Card>
+                   </motion.div>
+                 )}
+                </div>
+               </Card>
               </motion.div>
             </AnimatePresence>
 

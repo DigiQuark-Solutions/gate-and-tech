@@ -210,6 +210,64 @@ All colors MUST be HSL.
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+
+  /* Spotlight card hover effect */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.1s ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
+      transparent,
+      hsl(var(--primary) / 0.8),
+      transparent,
+      hsl(var(--primary-light) / 0.6),
+      transparent
+    );
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    animation: spotlight-border 2s linear infinite;
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  .spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .spotlight-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      600px circle at var(--x, 50%) var(--y, 50%),
+      hsl(var(--primary) / 0.15),
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .spotlight-card:hover .spotlight-overlay {
+    opacity: 1;
+  }
 }
 
 @layer utilities {
@@ -264,4 +322,13 @@ All colors MUST be HSL.
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+@keyframes spotlight-border {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
 }

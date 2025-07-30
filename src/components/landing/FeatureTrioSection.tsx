@@ -5,6 +5,7 @@ import analyticsImage from "@/assets/analytics-dashboard.jpg";
 import communityImage from "@/assets/community-interface.jpg";
 import demoImage from "@/assets/demo-interface.jpg";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/use-scroll-animation";
+import { useCardHover } from "@/hooks/use-card-hover";
 
 const features = [
   {
@@ -29,6 +30,85 @@ const features = [
     stats: "27k+ Active Community"
   }
 ];
+
+const FeatureCard = ({ feature, index, isActive, isEven }: {
+  feature: typeof features[0];
+  index: number;
+  isActive: boolean;
+  isEven: boolean;
+}) => {
+  const { cardProps, hoverState } = useCardHover();
+
+  return (
+    <motion.div
+      className={isEven ? '' : 'lg:col-start-1 lg:row-start-1'}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <Card 
+        {...cardProps}
+        className="spotlight-card glow-border overflow-hidden bg-transparent border-0 p-0 group"
+        style={{
+          ...cardProps.style,
+          '--x': `${hoverState.x}%`,
+          '--y': `${hoverState.y}%`,
+        } as React.CSSProperties}
+      >
+        <div className="spotlight-overlay" />
+        <div className="relative">
+          <motion.img
+            src={feature.image}
+            alt={`${feature.title} interface preview`}
+            className="w-full h-auto rounded-2xl"
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          />
+          
+          {/* Dynamic overlay gradient */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-primary/10 rounded-2xl" 
+            initial={{ opacity: 0 }}
+            animate={isActive ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          />
+          
+          {/* Floating badge with physics */}
+          <motion.div
+            className="absolute top-4 left-4 bg-surface-dark-1/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold border border-primary/30"
+            animate={{ 
+              y: [0, -8, 0],
+              rotate: [0, 2, -2, 0] 
+            }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              delay: index * 0.7,
+              ease: "easeInOut"
+            }}
+            whileHover={{ scale: 1.1 }}
+          >
+            Feature {index + 1}
+          </motion.div>
+          
+          {/* Subtle scanning line effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent rounded-2xl"
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 2,
+              ease: "easeInOut"
+            }}
+            style={{ width: '30%' }}
+          />
+        </div>
+      </Card>
+    </motion.div>
+  );
+};
 
 export const FeatureTrioSection = () => {
   const { ref: sectionRef } = useScrollAnimation();
@@ -116,75 +196,12 @@ export const FeatureTrioSection = () => {
                 </div>
 
                 {/* Image */}
-                <motion.div
-                  className={isEven ? '' : 'lg:col-start-1 lg:row-start-1'}
-                  whileHover={{ 
-                    scale: 1.02,
-                    rotateY: 5,
-                    rotateX: 5,
-                  }}
-                  transition={{ 
-                    duration: 0.4,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <Card className="glow-border overflow-hidden bg-transparent border-0 p-0 group">
-                    <div className="relative">
-                      <motion.img
-                        src={feature.image}
-                        alt={`${feature.title} interface preview`}
-                        className="w-full h-auto rounded-2xl"
-                        initial={{ scale: 1.1, opacity: 0 }}
-                        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                      />
-                      
-                      {/* Dynamic overlay gradient */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-primary/10 rounded-2xl" 
-                        initial={{ opacity: 0 }}
-                        animate={isActive ? { opacity: 1 } : { opacity: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                      />
-                      
-                      {/* Floating badge with physics */}
-                      <motion.div
-                        className="absolute top-4 left-4 bg-surface-dark-1/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold border border-primary/30"
-                        animate={{ 
-                          y: [0, -8, 0],
-                          rotate: [0, 2, -2, 0] 
-                        }}
-                        transition={{ 
-                          duration: 3, 
-                          repeat: Infinity, 
-                          delay: index * 0.7,
-                          ease: "easeInOut"
-                        }}
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        Feature {index + 1}
-                      </motion.div>
-                      
-                      {/* Subtle scanning line effect */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent rounded-2xl"
-                        animate={{
-                          x: ['-100%', '100%'],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          repeatDelay: 2,
-                          ease: "easeInOut"
-                        }}
-                        style={{ width: '30%' }}
-                      />
-                    </div>
-                  </Card>
-                </motion.div>
+                <FeatureCard
+                  feature={feature}
+                  index={index}
+                  isActive={isActive}
+                  isEven={isEven}
+                />
               </motion.div>
             );
           })}
