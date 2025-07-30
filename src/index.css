@@ -113,7 +113,7 @@ All colors MUST be HSL.
   /* Section-Specific Border Glows */
   .hero-border-glow::before,
   .features-border-glow::before,
-  .faq-border-glow::before,
+  .demo-border-glow::before,
   .newsletter-border-glow::before {
     content: '';
     position: absolute;
@@ -143,7 +143,7 @@ All colors MUST be HSL.
     --section-secondary: hsl(142 71% 45% / 0.6);
   }
 
-  .faq-border-glow {
+  .demo-border-glow {
     --section-primary: hsl(45 93% 47% / 0.8);
     --section-secondary: hsl(0 84% 60% / 0.6);
   }
@@ -155,14 +155,14 @@ All colors MUST be HSL.
 
   .hero-border-glow:hover::before,
   .features-border-glow:hover::before,
-  .faq-border-glow:hover::before,
+  .demo-border-glow:hover::before,
   .newsletter-border-glow:hover::before {
     opacity: 1;
   }
 
   .hero-border-glow::after,
   .features-border-glow::after,
-  .faq-border-glow::after,
+  .demo-border-glow::after,
   .newsletter-border-glow::after {
     content: '';
     position: absolute;
@@ -170,6 +170,34 @@ All colors MUST be HSL.
     background: inherit;
     border-radius: inherit;
     z-index: -1;
+  }
+
+  /* FAQ Item Glow */
+  .faq-item-glow {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      hsl(var(--primary) / 0.3),
+      transparent,
+      hsl(var(--primary-light) / 0.2),
+      transparent
+    );
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .faq-item-glow:hover::before {
+    opacity: 1;
   }
   
   /* Marquee Animation */

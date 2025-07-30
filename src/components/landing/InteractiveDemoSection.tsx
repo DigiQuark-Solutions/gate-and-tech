@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Clock, CheckCircle, ArrowRight } from "lucide-react";
 import demoImage from "@/assets/demo-interface.jpg";
+import { useCardHover } from "@/hooks/use-card-hover";
 
 const sampleQuestions = [
   {
@@ -31,6 +32,7 @@ export const InteractiveDemoSection = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [timer, setTimer] = useState(30);
+  const { cardProps, hoverState } = useCardHover();
 
   const handleAnswerSelect = (optionIndex: number) => {
     setSelectedAnswer(optionIndex);
@@ -74,7 +76,17 @@ export const InteractiveDemoSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <Card className="p-8 bg-surface-dark border-gray-3 glow-border">
+              <Card 
+                {...cardProps}
+                className="p-8 bg-surface-dark border-gray-3 demo-border-glow relative"
+              >
+                <div 
+                  className="spotlight-overlay"
+                  style={{
+                    '--x': `${hoverState.x}%`,
+                    '--y': `${hoverState.y}%`,
+                  } as React.CSSProperties}
+                />
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-sm text-muted-foreground">
                     Question {currentQuestion + 1} of {sampleQuestions.length}
