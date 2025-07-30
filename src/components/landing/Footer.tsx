@@ -122,8 +122,15 @@ export const Footer = () => {
           </p>
           
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span>Follow us</span>
-            <span className="underline-animate">@GATEAndTech</span>
+            <span>Developed by</span>
+            <a 
+              href="https://digiquark.solutions/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-semibold text-primary hover:text-primary-light transition-colors duration-200 underline-animate"
+            >
+              DigiQuark Solutions
+            </a>
           </div>
         </motion.div>
       </div>
