@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Github, Twitter, Linkedin, Mail, Youtube } from "lucide-react";
 const footerLinks = {
   Product: ["Features", "Pricing", "Demo", "Roadmap"],
   Company: ["About", "Careers", "Blog", "Contact"],
@@ -7,6 +7,10 @@ const footerLinks = {
   Legal: ["Terms", "Privacy", "Security", "Cookies"]
 };
 const socialLinks = [{
+  icon: Youtube,
+  href: "https://www.youtube.com/@gateandtechofficial",
+  label: "YouTube"
+}, {
   icon: Twitter,
   href: "#",
   label: "Twitter"
