@@ -24,8 +24,8 @@ All colors MUST be HSL.
     --accent: 47 100% 54%; /* #ffc414 - Yellow/Gold */
     
     /* AI Glowy Gradients */
-    --gradient-primary: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
-    --gradient-primary-hover: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
+    --gradient-primary: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
+    --gradient-primary-hover: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
     
     /* Functional Colors with Glow */
     --success: 142 71% 45%;
@@ -388,8 +388,9 @@ All colors MUST be HSL.
 
 /* Advanced Animation Keyframes */
 @keyframes glow-sweep {
-  0% { background-position: -400% 0; }
-  100% { background-position: 400% 0; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes marquee {
@@ -447,30 +448,33 @@ All colors MUST be HSL.
 @layer components {
   .glow-button {
     position: relative;
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
     background-size: 400% 400%;
     transition: all 0.5s ease;
-    animation: glow-sweep 5s ease-in-out infinite;
+    animation: glow-sweep 3s ease-in-out infinite;
   }
   
   .glow-button::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), 
-                radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), 
-                radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), 
-                radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
+    inset: -2px;
+    background: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
     background-size: 400% 400%;
-    opacity: 0.6;
-    filter: blur(20px);
-    transition: opacity 0.5s ease;
+    opacity: 0.7;
+    filter: blur(15px);
+    transition: all 0.5s ease;
     z-index: -1;
-    animation: glow-sweep 5s ease-in-out infinite;
+    border-radius: inherit;
+    animation: glow-sweep 3s ease-in-out infinite;
+  }
+  
+  .glow-button:hover {
+    transform: translateY(-2px);
   }
   
   .glow-button:hover::before {
     opacity: 1;
+    filter: blur(20px);
   }
   
   .glow-card {
