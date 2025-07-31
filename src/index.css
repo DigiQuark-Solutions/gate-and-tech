@@ -15,10 +15,10 @@ All colors MUST be HSL.
     --surface-dark-1: 217 19% 11%;
     --surface-dark-2: 215 25% 17%;
     
-    /* Primary Purple Palette */
-    --primary: 252 83% 68%;
-    --primary-dark: 252 83% 53%;
-    --primary-light: 252 83% 78%;
+    /* Primary Yellow Orange Palette */
+    --primary: 35 91% 60%;
+    --primary-dark: 35 91% 50%;
+    --primary-light: 35 91% 70%;
     --primary-foreground: 0 0% 100%;
     
     /* Functional Colors */
@@ -62,8 +62,8 @@ All colors MUST be HSL.
     --radius: 0.5rem;
     
     /* Animation Variables */
-    --glow-primary: 252 83% 68%;
-    --glow-secondary: 252 83% 78%;
+    --glow-primary: 35 91% 60%;
+    --glow-secondary: 35 91% 70%;
     
     /* Motion Design System Tokens */
     --transition-micro: 200ms cubic-bezier(0.4, 0, 0.2, 1);
