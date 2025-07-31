@@ -42,7 +42,7 @@ export const Navigation = () => {
             transition={{ duration: 0.2 }}
           >
             <img 
-              src="/lovable-uploads/f71a4ce0-0b53-4b48-aafa-14c7a745fcc3.png" 
+              src="/lovable-uploads/67dac32a-539c-4b45-b87c-b02d903f3268.png" 
               alt="GATE And Tech Logo" 
               className="h-8 w-8 mr-3"
             />
