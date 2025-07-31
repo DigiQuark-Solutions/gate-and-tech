@@ -117,7 +117,13 @@ export default {
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 				'draw-line': 'draw-line 2s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'mesh-float': 'mesh-float 6s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 8s ease-in-out infinite',
+				'smooth-bounce': 'smooth-bounce 2s ease-in-out infinite',
+				'border-flow': 'border-flow 3s ease-in-out infinite',
+				'particle-drift': 'particle-drift 4s ease-in-out infinite',
+				'magnetic-hover': 'magnetic-hover 0.3s ease-out forwards'
 			}
 		}
 	},

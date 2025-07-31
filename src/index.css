@@ -75,6 +75,22 @@ All colors MUST be HSL.
     /* Timing for staggered animations */
     --stagger-delay: 150ms;
     --section-delay: 100ms;
+    
+    /* Enhanced gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-dark) / 0.9));
+    --gradient-card: linear-gradient(145deg, hsl(var(--surface-dark-1) / 0.8), hsl(var(--surface-dark-2) / 0.6));
+    --gradient-mesh: radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.15) 0%, transparent 50%), 
+                     radial-gradient(circle at 80% 20%, hsl(var(--accent-orange) / 0.15) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 40%, hsl(var(--accent-green) / 0.1) 0%, transparent 50%);
+    
+    /* Advanced shadows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--background-dark) / 0.8);
+    --shadow-float: 0 20px 60px -20px hsl(var(--primary) / 0.4);
+    
+    /* Border gradients */
+    --border-gradient: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--primary-light) / 0.6), hsl(var(--primary) / 0.3));
   }
 
   .light {
@@ -305,6 +321,38 @@ All colors MUST be HSL.
     border: 1px solid hsl(var(--primary) / 0.2);
   }
 
+  /* New premium glass effects */
+  .glass-premium {
+    background: var(--gradient-card);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid;
+    border-image: var(--border-gradient) 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .glass-premium:hover {
+    box-shadow: var(--shadow-glow), var(--shadow-elegant);
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-float);
+  }
+
   /* Spotlight card hover effect */
   .spotlight-card {
     position: relative;
@@ -424,5 +472,75 @@ All colors MUST be HSL.
   }
   to {
     --border-angle: 360deg;
+  }
+}
+
+/* New premium animations */
+@keyframes mesh-float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  33% { 
+    transform: translateY(-10px) rotate(1deg);
+    opacity: 0.8;
+  }
+  66% { 
+    transform: translateY(-5px) rotate(-1deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes smooth-bounce {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+  }
+  50% { 
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes border-flow {
+  0% {
+    border-image-source: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--primary-light) / 0.6));
+  }
+  50% {
+    border-image-source: linear-gradient(45deg, hsl(var(--primary-light) / 0.6), hsl(var(--primary) / 0.8));
+  }
+  100% {
+    border-image-source: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--primary-light) / 0.6));
+  }
+}
+
+@keyframes particle-drift {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  25% { 
+    transform: translateY(-15px) translateX(5px) rotate(90deg);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-8px) translateX(-5px) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% { 
+    transform: translateY(-12px) translateX(3px) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes magnetic-hover {
+  0% { 
+    transform: translateY(0px) rotateX(0deg);
+  }
+  100% { 
+    transform: translateY(-8px) rotateX(10deg);
   }
 }
