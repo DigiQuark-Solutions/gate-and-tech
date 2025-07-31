@@ -70,6 +70,10 @@ export default {
 				'gray-2': 'hsl(var(--gray-2))',
 				'gray-3': 'hsl(var(--gray-3))'
 			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-primary-hover': 'var(--gradient-primary-hover)'
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
