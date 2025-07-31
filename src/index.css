@@ -15,17 +15,15 @@ All colors MUST be HSL.
     --surface-dark-1: 217 19% 11%;
     --surface-dark-2: 215 25% 17%;
     
-    /* AI Glowy Theme Colors - From BackgroundGradient */
-    --primary: 181 86% 40%; /* #00ccb1 - Cyan/Teal */
-    --primary-dark: 181 86% 35%; /* Darker cyan */
-    --primary-light: 202 98% 56%; /* #1ca0fb - Blue */
+    /* AI Glowy Theme Colors */
+    --primary: 283 100% 70%; /* Vibrant magenta-purple */
+    --primary-dark: 283 100% 60%; /* Darker magenta */
+    --primary-light: 195 100% 65%; /* Cyan blue */
     --primary-foreground: 0 0% 100%;
-    --secondary: 258 100% 69%; /* #7b61ff - Purple */
-    --accent: 47 100% 54%; /* #ffc414 - Yellow/Gold */
     
     /* AI Glowy Gradients */
-    --gradient-primary: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
-    --gradient-primary-hover: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
+    --gradient-primary: linear-gradient(135deg, hsl(283 100% 70%), hsl(315 100% 75%), hsl(195 100% 65%), hsl(240 100% 80%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(283 100% 80%), hsl(315 100% 85%), hsl(195 100% 75%), hsl(240 100% 90%));
     
     /* Functional Colors with Glow */
     --success: 142 71% 45%;
@@ -37,12 +35,11 @@ All colors MUST be HSL.
     --accent-green: 158 64% 52%;
     --accent-orange: 45 93% 47%;
     
-    /* AI Glow Effects - Using BackgroundGradient colors */
-    --glow-primary: 0 0 40px #00ccb199, 0 0 80px #00ccb166, 0 0 120px #00ccb133;
-    --glow-secondary: 0 0 40px #1ca0fb99, 0 0 80px #1ca0fb66, 0 0 120px #1ca0fb33;
-    --glow-accent: 0 0 40px #7b61ff99, 0 0 80px #7b61ff66;
-    --glow-gold: 0 0 40px #ffc41499, 0 0 80px #ffc41466;
-    --text-glow: 0 0 20px #00ccb1cc, 0 0 40px #1ca0fb99;
+    /* AI Glow Effects */
+    --glow-primary: 0 0 40px hsl(283 100% 70% / 0.6), 0 0 80px hsl(283 100% 70% / 0.4), 0 0 120px hsl(283 100% 70% / 0.2);
+    --glow-secondary: 0 0 40px hsl(195 100% 65% / 0.6), 0 0 80px hsl(195 100% 65% / 0.4), 0 0 120px hsl(195 100% 65% / 0.2);
+    --glow-accent: 0 0 40px hsl(315 100% 75% / 0.6), 0 0 80px hsl(315 100% 75% / 0.4);
+    --text-glow: 0 0 20px hsl(283 100% 70% / 0.8), 0 0 40px hsl(195 100% 65% / 0.6);
     
     /* Text Colors */
     --text-light-primary: 0 0% 100%;
@@ -388,9 +385,8 @@ All colors MUST be HSL.
 
 /* Advanced Animation Keyframes */
 @keyframes glow-sweep {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: -400% 0; }
+  100% { background-position: 400% 0; }
 }
 
 @keyframes marquee {
@@ -444,73 +440,24 @@ All colors MUST be HSL.
   }
 }
 
-/* Additional Glow Classes - BackgroundGradient Style */
+/* Additional Glow Classes */
 @layer components {
   .glow-button {
-    position: relative;
-    background: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
-    background-size: 400% 400%;
-    transition: all 0.5s ease;
-    animation: glow-sweep 3s ease-in-out infinite;
-  }
-  
-  .glow-button::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
-    background-size: 400% 400%;
-    opacity: 0.7;
-    filter: blur(15px);
-    transition: all 0.5s ease;
-    z-index: -1;
-    border-radius: inherit;
-    animation: glow-sweep 3s ease-in-out infinite;
+    box-shadow: var(--glow-primary);
+    transition: all 0.3s ease;
   }
   
   .glow-button:hover {
+    box-shadow: var(--glow-secondary);
     transform: translateY(-2px);
   }
   
-  .glow-button:hover::before {
-    opacity: 1;
-    filter: blur(20px);
-  }
-  
   .glow-card {
-    position: relative;
-    background: #141316;
-    border: 1px solid rgba(0, 204, 177, 0.3);
-    transition: all 0.5s ease;
-  }
-  
-  .glow-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), 
-                radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), 
-                radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), 
-                radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
-    background-size: 400% 400%;
-    opacity: 0.6;
-    filter: blur(20px);
-    transition: all 0.5s ease;
-    z-index: -1;
-    animation: glow-sweep 5s ease-in-out infinite;
-  }
-  
-  .glow-card:hover::before {
-    opacity: 1;
+    box-shadow: var(--glow-accent);
+    border: 1px solid hsl(var(--primary) / 0.3);
   }
   
   .glow-text {
-    background: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: glow-sweep 5s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px #00ccb199) drop-shadow(0 0 20px #7b61ff66);
+    text-shadow: var(--text-glow);
   }
 }
