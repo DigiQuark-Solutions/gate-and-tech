@@ -25,15 +25,21 @@ All colors MUST be HSL.
     --gradient-primary: linear-gradient(135deg, hsl(283 100% 70%), hsl(315 100% 75%), hsl(195 100% 65%), hsl(240 100% 80%));
     --gradient-primary-hover: linear-gradient(135deg, hsl(283 100% 80%), hsl(315 100% 85%), hsl(195 100% 75%), hsl(240 100% 90%));
     
-    /* Functional Colors */
+    /* Functional Colors with Glow */
     --success: 142 71% 45%;
     --error: 0 84% 60%;
     --warning: 45 93% 47%;
     
-    /* Accent Colors */
+    /* Accent Colors with AI Glow */
     --accent-red: 0 84% 60%;
     --accent-green: 158 64% 52%;
     --accent-orange: 45 93% 47%;
+    
+    /* AI Glow Effects */
+    --glow-primary: 0 0 40px hsl(283 100% 70% / 0.6), 0 0 80px hsl(283 100% 70% / 0.4), 0 0 120px hsl(283 100% 70% / 0.2);
+    --glow-secondary: 0 0 40px hsl(195 100% 65% / 0.6), 0 0 80px hsl(195 100% 65% / 0.4), 0 0 120px hsl(195 100% 65% / 0.2);
+    --glow-accent: 0 0 40px hsl(315 100% 75% / 0.6), 0 0 80px hsl(315 100% 75% / 0.4);
+    --text-glow: 0 0 20px hsl(283 100% 70% / 0.8), 0 0 40px hsl(195 100% 65% / 0.6);
     
     /* Text Colors */
     --text-light-primary: 0 0% 100%;
@@ -233,7 +239,7 @@ All colors MUST be HSL.
     animation-play-state: paused;
   }
   
-  /* Hero gradient text */
+  /* Hero gradient text with glow */
   .gradient-text {
     background: linear-gradient(135deg, 
       hsl(var(--primary)), 
@@ -242,6 +248,7 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(var(--text-glow));
   }
   
   /* Underline animation */
@@ -307,6 +314,7 @@ All colors MUST be HSL.
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--primary) / 0.2);
+    box-shadow: var(--glow-primary);
   }
 
   /* Spotlight card hover effect */
@@ -365,6 +373,7 @@ All colors MUST be HSL.
 
   .spotlight-card:hover .spotlight-overlay {
     opacity: 1;
+    box-shadow: var(--glow-secondary);
   }
 }
 
@@ -428,5 +437,27 @@ All colors MUST be HSL.
   }
   to {
     --border-angle: 360deg;
+  }
+}
+
+/* Additional Glow Classes */
+@layer components {
+  .glow-button {
+    box-shadow: var(--glow-primary);
+    transition: all 0.3s ease;
+  }
+  
+  .glow-button:hover {
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-2px);
+  }
+  
+  .glow-card {
+    box-shadow: var(--glow-accent);
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+  
+  .glow-text {
+    text-shadow: var(--text-glow);
   }
 }
