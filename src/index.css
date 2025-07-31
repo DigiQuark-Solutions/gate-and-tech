@@ -15,15 +15,15 @@ All colors MUST be HSL.
     --surface-dark-1: 217 19% 11%;
     --surface-dark-2: 215 25% 17%;
     
-    /* Primary Yellow to Orange Gradient Palette */
-    --primary: 45 100% 60%;
-    --primary-dark: 25 100% 50%;
-    --primary-light: 55 100% 65%;
+    /* Primary Vibrant Green Palette */
+    --primary: 142 70% 50%;
+    --primary-dark: 142 70% 40%;
+    --primary-light: 142 70% 60%;
     --primary-foreground: 0 0% 100%;
     
     /* Gradient Definitions */
-    --gradient-primary: linear-gradient(135deg, hsl(55 100% 65%), hsl(25 100% 50%));
-    --gradient-primary-hover: linear-gradient(135deg, hsl(55 100% 70%), hsl(25 100% 55%));
+    --gradient-primary: linear-gradient(135deg, hsl(142 70% 60%), hsl(158 64% 52%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(142 70% 65%), hsl(158 64% 57%));
     
     /* Functional Colors */
     --success: 142 71% 45%;
@@ -66,8 +66,8 @@ All colors MUST be HSL.
     --radius: 0.5rem;
     
     /* Animation Variables */
-    --glow-primary: 45 100% 60%;
-    --glow-secondary: 55 100% 65%;
+    --glow-primary: 142 70% 50%;
+    --glow-secondary: 142 70% 60%;
     
     /* Motion Design System Tokens */
     --transition-micro: 200ms cubic-bezier(0.4, 0, 0.2, 1);
