@@ -65,7 +65,7 @@ export const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Turn exam anxiety into{" "}
-              <span className="gradient-text glow-text">focused confidence</span>
+              <span className="gradient-text">focused confidence</span>
             </motion.h1>
             
             <motion.p 
@@ -85,7 +85,7 @@ export const HeroSection = () => {
             >
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+                className="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-6 text-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
               >
                 Get Started Free
               </Button>
@@ -109,7 +109,7 @@ export const HeroSection = () => {
           >
             <div 
               {...cardProps}
-              className="hero-border-glow glow-card rounded-2xl overflow-hidden relative"
+              className="hero-border-glow rounded-2xl overflow-hidden relative"
             >
               <div 
                 className="spotlight-overlay pointer-events-none"
