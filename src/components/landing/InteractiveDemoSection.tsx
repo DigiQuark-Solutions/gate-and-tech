@@ -78,15 +78,8 @@ export const InteractiveDemoSection = () => {
             >
               <Card 
                 {...cardProps}
-                className="p-8 glass-card demo-border-glow relative"
+                className="p-8 relative"
               >
-                <div 
-                  className="spotlight-overlay pointer-events-none"
-                  style={{
-                    '--x': `${hoverState.x}%`,
-                    '--y': `${hoverState.y}%`,
-                  } as React.CSSProperties}
-                />
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-sm text-muted-foreground">
                     Question {currentQuestion + 1} of {sampleQuestions.length}

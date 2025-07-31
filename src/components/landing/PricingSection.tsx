@@ -82,10 +82,10 @@ export const PricingSection = () => {
               >
                 <Card 
                   {...cardProps}
-                  className={`spotlight-card glass-card p-8 h-full relative overflow-hidden ${
+                  className={`p-8 h-full relative overflow-hidden ${
                     plan.popular 
                       ? "border-primary shadow-xl shadow-primary/20" 
-                      : "border-gray-3"
+                      : ""
                   }`}
                   style={{
                     ...cardProps.style,
@@ -93,7 +93,6 @@ export const PricingSection = () => {
                     '--y': `${hoverState.y}%`,
                   } as React.CSSProperties}
                 >
-                  <div className="spotlight-overlay" />
                   {plan.popular && (
                     <motion.div
                       className="absolute top-0 left-0 right-0 bg-primary text-white text-center py-2 text-sm font-semibold z-10"
