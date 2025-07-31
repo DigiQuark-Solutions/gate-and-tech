@@ -138,8 +138,8 @@ All colors MUST be HSL.
   }
 
   .hero-border-glow {
-    --section-primary: hsl(252 83% 68% / 0.8);
-    --section-secondary: hsl(252 83% 78% / 0.6);
+    --section-primary: hsl(142 70% 50% / 0.8);
+    --section-secondary: hsl(142 70% 60% / 0.6);
     position: relative;
     isolation: isolate;
   }
@@ -152,15 +152,15 @@ All colors MUST be HSL.
   }
 
   .demo-border-glow {
-    --section-primary: hsl(252 83% 68% / 0.8);
-    --section-secondary: hsl(252 83% 78% / 0.6);
+    --section-primary: hsl(142 70% 50% / 0.8);
+    --section-secondary: hsl(142 70% 60% / 0.6);
     position: relative;
     isolation: isolate;
   }
 
   .newsletter-border-glow {
-    --section-primary: hsl(252 83% 68% / 0.8);
-    --section-secondary: hsl(252 83% 78% / 0.6);
+    --section-primary: hsl(142 70% 50% / 0.8);
+    --section-secondary: hsl(142 70% 60% / 0.6);
     position: relative;
     isolation: isolate;
   }
