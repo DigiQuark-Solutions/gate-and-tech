@@ -1,20 +1,34 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { BackgroundGradient } from "./background-gradient"
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
-      className
-    )}
-    {...props}
-  />
-))
+  React.HTMLAttributes<HTMLDivElement> & { withGradient?: boolean }
+>(({ className, withGradient = false, ...props }, ref) => {
+  if (withGradient) {
+    return (
+      <BackgroundGradient
+        containerClassName={className}
+        className="rounded-lg bg-card text-card-foreground shadow-sm p-0"
+      >
+        <div ref={ref} {...props} />
+      </BackgroundGradient>
+    )
+  }
+  
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "rounded-lg border bg-card text-card-foreground shadow-sm",
+        className
+      )}
+      {...props}
+    />
+  )
+})
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
