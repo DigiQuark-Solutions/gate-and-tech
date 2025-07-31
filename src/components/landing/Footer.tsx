@@ -43,7 +43,12 @@ export const Footer = () => {
         }} transition={{
           duration: 0.6
         }}>
-            <div className="mb-6">
+            <div className="mb-6 flex items-center">
+              <img 
+                src="/lovable-uploads/f71a4ce0-0b53-4b48-aafa-14c7a745fcc3.png" 
+                alt="GATE And Tech Logo" 
+                className="h-8 w-8 mr-3"
+              />
               <span className="text-2xl font-black text-white">GATE And Tech</span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
