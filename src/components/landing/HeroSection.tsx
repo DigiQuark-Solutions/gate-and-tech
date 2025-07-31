@@ -4,18 +4,10 @@ import { Play } from "lucide-react";
 import heroImage from "@/assets/hero-dashboard.jpg";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useCardHover } from "@/hooks/use-card-hover";
-import { useEffect } from "react";
 
 export const HeroSection = () => {
   const { ref: sectionRef } = useScrollAnimation();
   const { cardProps, hoverState } = useCardHover();
-
-  useEffect(() => {
-    // Initialize Unicorn Studio when component mounts
-    if ((window as any).UnicornStudio) {
-      (window as any).UnicornStudio.init();
-    }
-  }, []);
 
   return (
     <motion.section 
@@ -25,24 +17,37 @@ export const HeroSection = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Unicorn Studio Animated Background */}
-      <div 
-        className="absolute inset-0 opacity-40"
-        data-us-project="6vo2bUG09OncD0A4VDS8"
-        style={{ 
-          width: '100%', 
-          height: '100%',
-          minHeight: '100vh'
-        }}
-      />
-      
-      {/* Background overlay for readability */}
+      {/* Background gradient with animation */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/40 to-background/60" 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" 
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
+      
+      {/* Animated background particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/20 rounded-full"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${30 + i * 10}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.4,
+            }}
+          />
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
