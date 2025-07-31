@@ -37,8 +37,15 @@ export const FinalCTASection = () => {
         >
            <Card 
              {...cardProps}
-             className="p-8 md:p-12 rounded-2xl relative"
+             className="glass-strong p-8 md:p-12 rounded-2xl newsletter-border-glow relative"
            >
+             <div 
+               className="spotlight-overlay pointer-events-none"
+               style={{
+                 '--x': `${hoverState.x}%`,
+                 '--y': `${hoverState.y}%`,
+               } as React.CSSProperties}
+             />
             <div className="text-center mb-8">
               <motion.div
                 className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-6"

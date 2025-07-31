@@ -126,7 +126,7 @@ export const TestimonialsSection = () => {
                 style={{ transformStyle: "preserve-3d" }}
               >
                <Card 
-                 className="text-white p-8 md:p-12 rounded-2xl shadow-2xl"
+                 className="glass-strong text-white p-8 md:p-12 rounded-2xl shadow-2xl border-0"
                >
                 <div className="relative z-10">
                 <div className="flex flex-col md:flex-row items-start gap-8">

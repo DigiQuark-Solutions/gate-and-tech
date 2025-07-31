@@ -46,13 +46,14 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
     >
       <Card 
         {...cardProps}
-        className="overflow-hidden p-0 group relative"
+        className="spotlight-card features-border-glow glass-card overflow-hidden bg-transparent border-0 p-0 group relative"
         style={{
           ...cardProps.style,
           '--x': `${hoverState.x}%`,
           '--y': `${hoverState.y}%`,
         } as React.CSSProperties}
       >
+        <div className="spotlight-overlay" />
         <div className="relative">
           <motion.img
             src={feature.image}

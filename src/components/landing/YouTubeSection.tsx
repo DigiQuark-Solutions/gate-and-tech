@@ -100,7 +100,7 @@ export const YouTubeSection = () => {
                       transition: { duration: 0.2 }
                     }}
                   >
-                    <Card className="text-center p-4">
+                    <Card className="text-center p-4 bg-surface-light/50 border-gray-3 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
                       <CardContent className="p-0">
                         <motion.div
                           whileHover={{ scale: 1.1, rotate: 5 }}

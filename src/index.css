@@ -15,31 +15,25 @@ All colors MUST be HSL.
     --surface-dark-1: 217 19% 11%;
     --surface-dark-2: 215 25% 17%;
     
-    /* AI Glowy Theme Colors */
-    --primary: 283 100% 70%; /* Vibrant magenta-purple */
-    --primary-dark: 283 100% 60%; /* Darker magenta */
-    --primary-light: 195 100% 65%; /* Cyan blue */
+    /* AI Theme Colors - Purple to Blue Gradient */
+    --primary: 267 100% 65%; /* Vibrant purple */
+    --primary-dark: 267 100% 55%; /* Darker purple */
+    --primary-light: 250 100% 70%; /* Blue-purple light */
     --primary-foreground: 0 0% 100%;
     
-    /* AI Glowy Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(283 100% 70%), hsl(315 100% 75%), hsl(195 100% 65%), hsl(240 100% 80%));
-    --gradient-primary-hover: linear-gradient(135deg, hsl(283 100% 80%), hsl(315 100% 85%), hsl(195 100% 75%), hsl(240 100% 90%));
+    /* AI Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(267 100% 65%), hsl(250 100% 70%), hsl(210 100% 60%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(267 100% 55%), hsl(250 100% 60%), hsl(210 100% 50%));
     
-    /* Functional Colors with Glow */
+    /* Functional Colors */
     --success: 142 71% 45%;
     --error: 0 84% 60%;
     --warning: 45 93% 47%;
     
-    /* Accent Colors with AI Glow */
+    /* Accent Colors */
     --accent-red: 0 84% 60%;
     --accent-green: 158 64% 52%;
     --accent-orange: 45 93% 47%;
-    
-    /* AI Glow Effects */
-    --glow-primary: 0 0 40px hsl(283 100% 70% / 0.6), 0 0 80px hsl(283 100% 70% / 0.4), 0 0 120px hsl(283 100% 70% / 0.2);
-    --glow-secondary: 0 0 40px hsl(195 100% 65% / 0.6), 0 0 80px hsl(195 100% 65% / 0.4), 0 0 120px hsl(195 100% 65% / 0.2);
-    --glow-accent: 0 0 40px hsl(315 100% 75% / 0.6), 0 0 80px hsl(315 100% 75% / 0.4);
-    --text-glow: 0 0 20px hsl(283 100% 70% / 0.8), 0 0 40px hsl(195 100% 65% / 0.6);
     
     /* Text Colors */
     --text-light-primary: 0 0% 100%;
@@ -72,8 +66,8 @@ All colors MUST be HSL.
     --radius: 0.5rem;
     
     /* Animation Variables */
-    --glow-primary: 283 100% 70%;
-    --glow-secondary: 195 100% 65%;
+    --glow-primary: 267 100% 65%;
+    --glow-secondary: 250 100% 70%;
     
     /* Motion Design System Tokens */
     --transition-micro: 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -239,7 +233,7 @@ All colors MUST be HSL.
     animation-play-state: paused;
   }
   
-  /* Hero gradient text with glow */
+  /* Hero gradient text */
   .gradient-text {
     background: linear-gradient(135deg, 
       hsl(var(--primary)), 
@@ -248,7 +242,6 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(var(--text-glow));
   }
   
   /* Underline animation */
@@ -314,7 +307,6 @@ All colors MUST be HSL.
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--primary) / 0.2);
-    box-shadow: var(--glow-primary);
   }
 
   /* Spotlight card hover effect */
@@ -373,7 +365,6 @@ All colors MUST be HSL.
 
   .spotlight-card:hover .spotlight-overlay {
     opacity: 1;
-    box-shadow: var(--glow-secondary);
   }
 }
 
@@ -437,27 +428,5 @@ All colors MUST be HSL.
   }
   to {
     --border-angle: 360deg;
-  }
-}
-
-/* Additional Glow Classes */
-@layer components {
-  .glow-button {
-    box-shadow: var(--glow-primary);
-    transition: all 0.3s ease;
-  }
-  
-  .glow-button:hover {
-    box-shadow: var(--glow-secondary);
-    transform: translateY(-2px);
-  }
-  
-  .glow-card {
-    box-shadow: var(--glow-accent);
-    border: 1px solid hsl(var(--primary) / 0.3);
-  }
-  
-  .glow-text {
-    text-shadow: var(--text-glow);
   }
 }

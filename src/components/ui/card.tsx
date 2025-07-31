@@ -1,15 +1,19 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { BackgroundGradient } from "./background-gradient"
 
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <BackgroundGradient className={cn("rounded-3xl bg-card text-card-foreground shadow-sm", className)}>
-    <div ref={ref} {...props} />
-  </BackgroundGradient>
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      className
+    )}
+    {...props}
+  />
 ))
 Card.displayName = "Card"
 
