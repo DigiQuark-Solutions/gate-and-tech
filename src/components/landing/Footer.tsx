@@ -44,7 +44,7 @@ export const Footer = () => {
           duration: 0.6
         }}>
             <div className="mb-6">
-              <span className="text-2xl font-black gradient-text">GATE And Tech</span>
+              <span className="text-2xl font-black text-white">GATE And Tech</span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Transforming exam anxiety into focused confidence through adaptive learning and community support.

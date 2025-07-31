@@ -46,7 +46,7 @@ export const Navigation = () => {
               alt="GATE And Tech Logo" 
               className="h-8 w-8 mr-3"
             />
-            <span className="text-2xl font-black gradient-text">GATE And Tech</span>
+            <span className="text-2xl font-black text-white">GATE And Tech</span>
           </motion.div>
 
           {/* Desktop Navigation */}
