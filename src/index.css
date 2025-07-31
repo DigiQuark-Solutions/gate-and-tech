@@ -15,15 +15,17 @@ All colors MUST be HSL.
     --surface-dark-1: 217 19% 11%;
     --surface-dark-2: 215 25% 17%;
     
-    /* AI Glowy Theme Colors */
-    --primary: 283 100% 70%; /* Vibrant magenta-purple */
-    --primary-dark: 283 100% 60%; /* Darker magenta */
-    --primary-light: 195 100% 65%; /* Cyan blue */
+    /* AI Glowy Theme Colors - From BackgroundGradient */
+    --primary: 181 86% 40%; /* #00ccb1 - Cyan/Teal */
+    --primary-dark: 181 86% 35%; /* Darker cyan */
+    --primary-light: 202 98% 56%; /* #1ca0fb - Blue */
     --primary-foreground: 0 0% 100%;
+    --secondary: 258 100% 69%; /* #7b61ff - Purple */
+    --accent: 47 100% 54%; /* #ffc414 - Yellow/Gold */
     
     /* AI Glowy Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(283 100% 70%), hsl(315 100% 75%), hsl(195 100% 65%), hsl(240 100% 80%));
-    --gradient-primary-hover: linear-gradient(135deg, hsl(283 100% 80%), hsl(315 100% 85%), hsl(195 100% 75%), hsl(240 100% 90%));
+    --gradient-primary: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
+    --gradient-primary-hover: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
     
     /* Functional Colors with Glow */
     --success: 142 71% 45%;
@@ -35,11 +37,12 @@ All colors MUST be HSL.
     --accent-green: 158 64% 52%;
     --accent-orange: 45 93% 47%;
     
-    /* AI Glow Effects */
-    --glow-primary: 0 0 40px hsl(283 100% 70% / 0.6), 0 0 80px hsl(283 100% 70% / 0.4), 0 0 120px hsl(283 100% 70% / 0.2);
-    --glow-secondary: 0 0 40px hsl(195 100% 65% / 0.6), 0 0 80px hsl(195 100% 65% / 0.4), 0 0 120px hsl(195 100% 65% / 0.2);
-    --glow-accent: 0 0 40px hsl(315 100% 75% / 0.6), 0 0 80px hsl(315 100% 75% / 0.4);
-    --text-glow: 0 0 20px hsl(283 100% 70% / 0.8), 0 0 40px hsl(195 100% 65% / 0.6);
+    /* AI Glow Effects - Using BackgroundGradient colors */
+    --glow-primary: 0 0 40px #00ccb199, 0 0 80px #00ccb166, 0 0 120px #00ccb133;
+    --glow-secondary: 0 0 40px #1ca0fb99, 0 0 80px #1ca0fb66, 0 0 120px #1ca0fb33;
+    --glow-accent: 0 0 40px #7b61ff99, 0 0 80px #7b61ff66;
+    --glow-gold: 0 0 40px #ffc41499, 0 0 80px #ffc41466;
+    --text-glow: 0 0 20px #00ccb1cc, 0 0 40px #1ca0fb99;
     
     /* Text Colors */
     --text-light-primary: 0 0% 100%;
@@ -440,24 +443,71 @@ All colors MUST be HSL.
   }
 }
 
-/* Additional Glow Classes */
+  /* Additional Glow Classes - BackgroundGradient Style */
 @layer components {
   .glow-button {
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
     box-shadow: var(--glow-primary);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glow-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity 0.5s ease;
+    z-index: -1;
   }
   
   .glow-button:hover {
-    box-shadow: var(--glow-secondary);
+    box-shadow: var(--glow-secondary), var(--glow-accent);
     transform: translateY(-2px);
+    animation: glow-sweep 5s ease-in-out infinite;
+  }
+  
+  .glow-button:hover::before {
+    opacity: 1;
   }
   
   .glow-card {
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
     box-shadow: var(--glow-accent);
-    border: 1px solid hsl(var(--primary) / 0.3);
+    border: 1px solid #00ccb166;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
+    opacity: 0.6;
+    filter: blur(20px);
+    transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+  
+  .glow-card:hover::before {
+    opacity: 1;
   }
   
   .glow-text {
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-shadow: var(--text-glow);
+    animation: glow-sweep 5s ease-in-out infinite;
   }
 }
