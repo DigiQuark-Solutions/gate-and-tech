@@ -64,12 +64,17 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           }}
         >
           <motion.div
-            className="text-6xl font-black gradient-text mb-4"
+            className="flex items-center mb-4"
             initial={{ letterSpacing: "0.2em" }}
             animate={{ letterSpacing: "0.05em" }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            GATE And Tech
+            <img 
+              src="/lovable-uploads/f71a4ce0-0b53-4b48-aafa-14c7a745fcc3.png" 
+              alt="GATE And Tech Logo" 
+              className="h-12 w-12 mr-4"
+            />
+            <span className="text-6xl font-black text-white">GATE And Tech</span>
           </motion.div>
           
           <motion.div
