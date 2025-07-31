@@ -3,8 +3,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Zap, Shield, CreditCard } from "lucide-react";
 import { useCardHover } from "@/hooks/use-card-hover";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { GlowingBadge } from "@/components/ui/animated-counter";
 
 const plans = [
   {
@@ -84,9 +82,9 @@ export const PricingSection = () => {
               >
                 <Card 
                   {...cardProps}
-                  className={`spotlight-card glass-premium p-8 h-full relative overflow-hidden transition-all duration-300 ${
+                  className={`spotlight-card glass-card p-8 h-full relative overflow-hidden ${
                     plan.popular 
-                      ? "border-primary shadow-2xl shadow-primary/30" 
+                      ? "border-primary shadow-xl shadow-primary/20" 
                       : "border-gray-3"
                   }`}
                   style={{
@@ -98,17 +96,12 @@ export const PricingSection = () => {
                   <div className="spotlight-overlay" />
                   {plan.popular && (
                     <motion.div
-                      className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary to-primary-light text-white text-center py-3 text-sm font-bold z-10 shadow-lg"
-                      initial={{ y: -100, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 0.3, type: "spring" }}
+                      className="absolute top-0 left-0 right-0 bg-primary text-white text-center py-2 text-sm font-semibold z-10"
+                      initial={{ y: -100 }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      <motion.span
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        ⭐ Most Popular
-                      </motion.span>
+                      Most Popular
                     </motion.div>
                   )}
                   
@@ -118,13 +111,7 @@ export const PricingSection = () => {
                       <p className="text-muted-foreground mb-4">{plan.description}</p>
                       
                       <div className="flex items-baseline gap-2">
-                        <motion.span 
-                          className="text-4xl font-black gradient-text"
-                          animate={{ scale: [1, 1.02, 1] }}
-                          transition={{ duration: 3, repeat: Infinity }}
-                        >
-                          {plan.price}
-                        </motion.span>
+                        <span className="text-4xl font-black">{plan.price}</span>
                         <span className="text-muted-foreground">/ {plan.period}</span>
                       </div>
                     </div>
@@ -147,16 +134,15 @@ export const PricingSection = () => {
                       ))}
                     </ul>
 
-                    <MagneticButton
-                      className={`w-full py-6 text-lg font-semibold ${
+                    <Button
+                      className={`w-full py-6 text-lg font-semibold transition-all duration-200 hover:scale-105 ${
                         plan.popular
-                          ? "bg-primary hover:bg-primary-dark text-white"
+                          ? "bg-primary hover:bg-primary-dark text-white shadow-lg hover:shadow-xl hover:shadow-primary/25"
                           : "bg-success hover:bg-success/90 text-white"
                       }`}
-                      magneticStrength={plan.popular ? 0.25 : 0.15}
                     >
                       {plan.cta}
-                    </MagneticButton>
+                    </Button>
                   </div>
                 </Card>
               </motion.div>

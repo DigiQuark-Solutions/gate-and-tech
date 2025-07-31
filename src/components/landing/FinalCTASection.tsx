@@ -6,8 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, Send, CheckCircle } from "lucide-react";
 import { useCardHover } from "@/hooks/use-card-hover";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { GlowingBadge } from "@/components/ui/animated-counter";
 
 export const FinalCTASection = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +37,7 @@ export const FinalCTASection = () => {
         >
            <Card 
              {...cardProps}
-             className="glass-premium p-8 md:p-12 rounded-2xl newsletter-border-glow relative"
+             className="glass-strong p-8 md:p-12 rounded-2xl newsletter-border-glow relative"
            >
              <div 
                className="spotlight-overlay pointer-events-none"
@@ -100,15 +98,14 @@ export const FinalCTASection = () => {
                   </div>
                 </div>
 
-                <MagneticButton
+                <Button
                   type="submit"
                   disabled={!email || !consent}
-                  className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                  magneticStrength={!email || !consent ? 0 : 0.2}
+                  className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-6 text-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   <Send className="w-5 h-5 mr-2" />
                   Send Today's Question
-                </MagneticButton>
+                </Button>
 
                 <p className="text-center text-sm text-gray-2">
                   Zero spam. Unsubscribe anytime.
