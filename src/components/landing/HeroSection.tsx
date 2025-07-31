@@ -4,9 +4,6 @@ import { Play } from "lucide-react";
 import heroImage from "@/assets/hero-dashboard.jpg";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useCardHover } from "@/hooks/use-card-hover";
-import { MeshGradient, FloatingParticles } from "@/components/ui/mesh-gradient";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { AnimatedCounter, GlowingBadge } from "@/components/ui/animated-counter";
 
 export const HeroSection = () => {
   const { ref: sectionRef } = useScrollAnimation();
@@ -20,19 +17,37 @@ export const HeroSection = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Enhanced mesh gradient background */}
-      <MeshGradient className="z-0" />
-      
-      {/* Floating particles */}
-      <FloatingParticles count={8} />
-      
-      {/* Enhanced background gradient overlay */}
+      {/* Background gradient with animation */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-background/50 via-transparent to-background/80" 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" 
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
       />
+      
+      {/* Animated background particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/20 rounded-full"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${30 + i * 10}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.4,
+            }}
+          />
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -68,22 +83,20 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <MagneticButton 
+              <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-6 text-lg"
-                magneticStrength={0.2}
+                className="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-6 text-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
               >
                 Get Started Free
-              </MagneticButton>
-              <MagneticButton 
+              </Button>
+              <Button 
                 variant="outline" 
                 size="lg"
-                className="border-gray-3 text-foreground hover:bg-surface-dark px-8 py-6 text-lg glass-card"
-                magneticStrength={0.15}
+                className="border-gray-3 text-foreground hover:bg-surface-dark px-8 py-6 text-lg transition-all duration-200 hover:scale-105"
               >
                 <Play className="w-5 h-5 mr-2" />
                 Watch 90-sec Tour
-              </MagneticButton>
+              </Button>
             </motion.div>
           </motion.div>
           
@@ -114,31 +127,21 @@ export const HeroSection = () => {
               />
             </div>
             
-            {/* Enhanced floating elements */}
+            {/* Floating elements */}
             <motion.div
-              className="absolute -top-4 -right-4"
-              animate={{ 
-                y: [0, -10, 0],
-                rotate: [0, 5, 0]
-              }}
+              className="absolute -top-4 -right-4 glass-strong text-white px-4 py-2 rounded-full font-semibold shadow-lg border border-success/30"
+              animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
-              <GlowingBadge glowColor="success" className="font-semibold">
-                +18% Score
-              </GlowingBadge>
+              +18% Score
             </motion.div>
             
             <motion.div
-              className="absolute -bottom-4 -left-4"
-              animate={{ 
-                y: [0, 10, 0],
-                rotate: [0, -5, 0]
-              }}
+              className="absolute -bottom-4 -left-4 glass-strong text-white px-4 py-2 rounded-full font-semibold shadow-lg border border-primary/30"
+              animate={{ y: [0, 10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             >
-              <GlowingBadge glowColor="primary" className="font-semibold">
-                <AnimatedCounter value={27000} suffix="k+ Students" />
-              </GlowingBadge>
+              27k+ Students
             </motion.div>
           </motion.div>
         </div>

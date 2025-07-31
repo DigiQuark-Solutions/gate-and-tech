@@ -6,8 +6,6 @@ import communityImage from "@/assets/community-interface.jpg";
 import demoImage from "@/assets/demo-interface.jpg";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/use-scroll-animation";
 import { useCardHover } from "@/hooks/use-card-hover";
-import { ParallaxImage } from "@/components/ui/parallax-section";
-import { GlowingBadge } from "@/components/ui/animated-counter";
 
 const features = [
   {
@@ -48,7 +46,7 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
     >
       <Card 
         {...cardProps}
-        className="spotlight-card features-border-glow glass-premium overflow-hidden border-0 p-0 group relative"
+        className="spotlight-card features-border-glow glass-card overflow-hidden bg-transparent border-0 p-0 group relative"
         style={{
           ...cardProps.style,
           '--x': `${hoverState.x}%`,
@@ -56,25 +54,26 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
         } as React.CSSProperties}
       >
         <div className="spotlight-overlay" />
-        <div className="relative rounded-2xl overflow-hidden">
-          <ParallaxImage
+        <div className="relative">
+          <motion.img
             src={feature.image}
             alt={`${feature.title} interface preview`}
-            className="rounded-2xl"
-            speed={0.2}
+            className="w-full h-auto rounded-2xl"
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
           />
           
-          {/* Enhanced overlay gradient */}
+          {/* Dynamic overlay gradient */}
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-primary/20 rounded-2xl" 
+            className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-primary/10 rounded-2xl" 
             initial={{ opacity: 0 }}
             animate={isActive ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           />
           
-          {/* Feature badge */}
           <motion.div
-            className="absolute top-4 left-4"
+            className="absolute top-4 left-4 glass-dark text-white px-3 py-1 rounded-full text-sm font-semibold border border-primary/30"
             animate={{ 
               y: [0, -8, 0],
               rotate: [0, 2, -2, 0] 
@@ -87,22 +86,9 @@ const FeatureCard = ({ feature, index, isActive, isEven }: {
             }}
             whileHover={{ scale: 1.1 }}
           >
-            <GlowingBadge glowColor="primary" className="text-sm font-semibold">
-              Feature {index + 1}
-            </GlowingBadge>
+            Feature {index + 1}
           </motion.div>
           
-          {/* Stats overlay */}
-          <motion.div
-            className="absolute bottom-4 right-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <GlowingBadge glowColor="success" className="text-xs">
-              {feature.stats}
-            </GlowingBadge>
-          </motion.div>
         </div>
       </Card>
     </motion.div>
@@ -174,12 +160,8 @@ export const FeatureTrioSection = () => {
                 {/* Content */}
                 <div className={isEven ? '' : 'lg:col-start-2'}>
                   <motion.div
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: 360
-                    }}
-                    className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-2xl mb-6 shadow-lg"
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-6"
                   >
                     <Icon className="w-8 h-8 text-primary" />
                   </motion.div>
@@ -192,17 +174,10 @@ export const FeatureTrioSection = () => {
                     {feature.description}
                   </p>
                   
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2"
-                  >
-                    <motion.div 
-                      className="w-2 h-2 bg-primary rounded-full" 
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
+                  <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
+                    <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="text-primary font-semibold">{feature.stats}</span>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Image */}
