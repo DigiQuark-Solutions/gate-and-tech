@@ -8,28 +8,37 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* CodeHelp Design System - Dark Mode First */
-    --background-dark: 226 28% 7%;
+    /* Vibrant Design System - Electric & Dynamic */
+    --background-dark: 230 35% 4%;
     --background-light: 0 0% 100%;
-    --surface-dark: 220 13% 18%;
-    --surface-dark-1: 217 19% 11%;
-    --surface-dark-2: 215 25% 17%;
+    --surface-dark: 230 25% 12%;
+    --surface-dark-1: 230 30% 8%;
+    --surface-dark-2: 230 20% 16%;
     
-    /* Primary Purple Palette */
-    --primary: 252 83% 68%;
-    --primary-dark: 252 83% 53%;
-    --primary-light: 252 83% 78%;
+    /* Electric Purple-Pink Gradient Palette */
+    --primary: 280 100% 70%;
+    --primary-dark: 280 100% 55%;
+    --primary-light: 290 100% 80%;
+    --primary-glow: 285 100% 75%;
     --primary-foreground: 0 0% 100%;
     
-    /* Functional Colors */
-    --success: 142 71% 45%;
-    --error: 0 84% 60%;
-    --warning: 45 93% 47%;
+    /* Vibrant Secondary Colors */
+    --secondary-electric: 195 100% 65%;
+    --secondary-neon: 315 100% 65%;
+    --secondary-lime: 75 85% 60%;
     
-    /* Accent Colors */
-    --accent-red: 0 84% 60%;
-    --accent-green: 158 64% 52%;
-    --accent-orange: 45 93% 47%;
+    /* High-Energy Functional Colors */
+    --success: 140 85% 55%;
+    --error: 0 100% 65%;
+    --warning: 35 100% 55%;
+    
+    /* Neon Accent Colors */
+    --accent-red: 0 100% 65%;
+    --accent-green: 140 85% 55%;
+    --accent-orange: 25 100% 60%;
+    --accent-blue: 200 100% 65%;
+    --accent-pink: 320 100% 70%;
+    --accent-cyan: 180 100% 60%;
     
     /* Text Colors */
     --text-light-primary: 0 0% 100%;
@@ -61,9 +70,22 @@ All colors MUST be HSL.
     --ring: var(--primary);
     --radius: 0.5rem;
     
-    /* Animation Variables */
-    --glow-primary: 252 83% 68%;
-    --glow-secondary: 252 83% 78%;
+    /* Enhanced Animation Variables */
+    --glow-primary: 280 100% 70%;
+    --glow-secondary: 290 100% 80%;
+    --glow-electric: 195 100% 65%;
+    --glow-neon: 315 100% 65%;
+    
+    /* Vibrant Gradient Definitions */
+    --gradient-electric: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary-electric)));
+    --gradient-neon: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary-neon)));
+    --gradient-rainbow: linear-gradient(135deg, hsl(var(--accent-pink)), hsl(var(--primary)), hsl(var(--secondary-electric)), hsl(var(--accent-cyan)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--accent-orange)), hsl(var(--accent-red)), hsl(var(--primary)));
+    
+    /* Dynamic Shadow System */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--primary) / 0.2);
+    --shadow-electric: 0 0 30px hsl(var(--secondary-electric) / 0.5), 0 0 60px hsl(var(--secondary-electric) / 0.2);
+    --shadow-pink: 0 0 25px hsl(var(--accent-pink) / 0.4), 0 0 50px hsl(var(--accent-pink) / 0.2);
     
     /* Motion Design System Tokens */
     --transition-micro: 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -229,15 +251,31 @@ All colors MUST be HSL.
     animation-play-state: paused;
   }
   
-  /* Hero gradient text */
+  /* Enhanced gradient text effects */
   .gradient-text {
-    background: linear-gradient(135deg, 
-      hsl(var(--primary)), 
-      hsl(var(--primary-light))
-    );
+    background: var(--gradient-electric);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+  
+  .gradient-neon {
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+  
+  .gradient-rainbow {
+    background: var(--gradient-rainbow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 400% 400%;
+    animation: rainbow-shift 4s ease-in-out infinite;
   }
   
   /* Underline animation */
@@ -424,5 +462,29 @@ All colors MUST be HSL.
   }
   to {
     --border-angle: 360deg;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { 
+    box-shadow: var(--shadow-neon);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: var(--shadow-electric);
+    transform: scale(1.02);
   }
 }

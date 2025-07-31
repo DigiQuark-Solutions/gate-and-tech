@@ -47,7 +47,10 @@ export default {
 					foreground: 'hsl(var(--accent-foreground))',
 					red: 'hsl(var(--accent-red))',
 					green: 'hsl(var(--accent-green))',
-					orange: 'hsl(var(--accent-orange))'
+					orange: 'hsl(var(--accent-orange))',
+					blue: 'hsl(var(--accent-blue))',
+					pink: 'hsl(var(--accent-pink))',
+					cyan: 'hsl(var(--accent-cyan))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -63,6 +66,9 @@ export default {
 				'surface-dark': 'hsl(var(--surface-dark))',
 				'surface-dark-1': 'hsl(var(--surface-dark-1))',
 				'surface-dark-2': 'hsl(var(--surface-dark-2))',
+				'secondary-electric': 'hsl(var(--secondary-electric))',
+				'secondary-neon': 'hsl(var(--secondary-neon))',
+				'secondary-lime': 'hsl(var(--secondary-lime))',
 				'text-light-primary': 'hsl(var(--text-light-primary))',
 				'text-light-secondary': 'hsl(var(--text-light-secondary))',
 				'text-dark-primary': 'hsl(var(--text-dark-primary))',
