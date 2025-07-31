@@ -443,32 +443,29 @@ All colors MUST be HSL.
   }
 }
 
-  /* Additional Glow Classes - BackgroundGradient Style */
+/* Additional Glow Classes - BackgroundGradient Style */
 @layer components {
   .glow-button {
+    position: relative;
     background: var(--gradient-primary);
     background-size: 400% 400%;
-    box-shadow: var(--glow-primary);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: all 0.5s ease;
+    animation: glow-sweep 5s ease-in-out infinite;
   }
   
   .glow-button::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--gradient-primary);
+    background: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), 
+                radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), 
+                radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), 
+                radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
     background-size: 400% 400%;
-    opacity: 0;
+    opacity: 0.6;
     filter: blur(20px);
     transition: opacity 0.5s ease;
     z-index: -1;
-  }
-  
-  .glow-button:hover {
-    box-shadow: var(--glow-secondary), var(--glow-accent);
-    transform: translateY(-2px);
     animation: glow-sweep 5s ease-in-out infinite;
   }
   
@@ -477,24 +474,26 @@ All colors MUST be HSL.
   }
   
   .glow-card {
-    background: var(--gradient-primary);
-    background-size: 400% 400%;
-    box-shadow: var(--glow-accent);
-    border: 1px solid #00ccb166;
     position: relative;
-    overflow: hidden;
+    background: #141316;
+    border: 1px solid rgba(0, 204, 177, 0.3);
+    transition: all 0.5s ease;
   }
   
   .glow-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--gradient-primary);
+    background: radial-gradient(circle farthest-side at 0 100%, #00ccb1, transparent), 
+                radial-gradient(circle farthest-side at 100% 0, #7b61ff, transparent), 
+                radial-gradient(circle farthest-side at 100% 100%, #ffc414, transparent), 
+                radial-gradient(circle farthest-side at 0 0, #1ca0fb, #141316);
     background-size: 400% 400%;
     opacity: 0.6;
     filter: blur(20px);
-    transition: opacity 0.5s ease;
+    transition: all 0.5s ease;
     z-index: -1;
+    animation: glow-sweep 5s ease-in-out infinite;
   }
   
   .glow-card:hover::before {
@@ -502,12 +501,12 @@ All colors MUST be HSL.
   }
   
   .glow-text {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #00ccb1, #7b61ff, #ffc414, #1ca0fb);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: var(--text-glow);
     animation: glow-sweep 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px #00ccb199) drop-shadow(0 0 20px #7b61ff66);
   }
 }
