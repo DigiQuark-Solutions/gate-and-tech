@@ -47,10 +47,7 @@ export default {
 					foreground: 'hsl(var(--accent-foreground))',
 					red: 'hsl(var(--accent-red))',
 					green: 'hsl(var(--accent-green))',
-					orange: 'hsl(var(--accent-orange))',
-					blue: 'hsl(var(--accent-blue))',
-					pink: 'hsl(var(--accent-pink))',
-					cyan: 'hsl(var(--accent-cyan))'
+					orange: 'hsl(var(--accent-orange))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -66,9 +63,6 @@ export default {
 				'surface-dark': 'hsl(var(--surface-dark))',
 				'surface-dark-1': 'hsl(var(--surface-dark-1))',
 				'surface-dark-2': 'hsl(var(--surface-dark-2))',
-				'secondary-electric': 'hsl(var(--secondary-electric))',
-				'secondary-neon': 'hsl(var(--secondary-neon))',
-				'secondary-lime': 'hsl(var(--secondary-lime))',
 				'text-light-primary': 'hsl(var(--text-light-primary))',
 				'text-light-secondary': 'hsl(var(--text-light-secondary))',
 				'text-dark-primary': 'hsl(var(--text-dark-primary))',
@@ -123,7 +117,13 @@ export default {
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 				'draw-line': 'draw-line 2s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'mesh-float': 'mesh-float 6s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 8s ease-in-out infinite',
+				'smooth-bounce': 'smooth-bounce 2s ease-in-out infinite',
+				'border-flow': 'border-flow 3s ease-in-out infinite',
+				'particle-drift': 'particle-drift 4s ease-in-out infinite',
+				'magnetic-hover': 'magnetic-hover 0.3s ease-out forwards'
 			}
 		}
 	},
