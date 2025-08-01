@@ -78,7 +78,7 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           </motion.div>
           
           <motion.div
-            className="w-16 h-1 bg-gradient-to-r from-white to-white/60 rounded-full"
+            className="w-16 h-1 bg-gradient-to-r from-primary to-primary/60 rounded-full"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
