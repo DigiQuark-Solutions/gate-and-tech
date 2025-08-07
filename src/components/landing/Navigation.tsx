@@ -38,15 +38,13 @@ export const Navigation = () => {
           {/* Logo */}
           <motion.div 
             className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
           >
             <img 
               src="/lovable-uploads/f71a4ce0-0b53-4b48-aafa-14c7a745fcc3.png" 
               alt="GATE And Tech Logo" 
               className="h-8 w-8 mr-3"
             />
-            <span className="text-2xl font-black text-white">GATE And Tech</span>
+            <span className="text-2xl font-black text-foreground">GATE And Tech</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -55,11 +53,10 @@ export const Navigation = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium underline-animate"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
               >
                 {link.name}
               </motion.a>
@@ -73,7 +70,7 @@ export const Navigation = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button className="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-2 transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-primary/25">
+            <Button>
               Get Started
             </Button>
           </motion.div>
@@ -97,7 +94,7 @@ export const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 pb-4 border-t border-gray-3 glass-card rounded-lg mt-6 p-4"
+            className="md:hidden mt-6 p-4 border-t border-border rounded-lg bg-card"
           >
             <div className="space-y-4">
               {navLinks.map((link) => (
@@ -111,7 +108,7 @@ export const Navigation = () => {
                 </a>
               ))}
               <Button 
-                className="w-full bg-primary hover:bg-primary-dark text-white font-semibold mt-4"
+                className="w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Started

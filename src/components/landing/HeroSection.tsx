@@ -25,29 +25,6 @@ export const HeroSection = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
       
-      {/* Animated background particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + i * 10}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.4,
-            }}
-          />
-        ))}
-      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -65,7 +42,7 @@ export const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Turn exam anxiety into{" "}
-              <span className="gradient-text">focused confidence</span>
+              <span className="text-primary">focused confidence</span>
             </motion.h1>
             
             <motion.p 
@@ -83,17 +60,10 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-6 text-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
-              >
+              <Button size="lg">
                 Get Started Free
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-gray-3 text-foreground hover:bg-surface-dark px-8 py-6 text-lg transition-all duration-200 hover:scale-105"
-              >
+              <Button variant="outline" size="lg">
                 <Play className="w-5 h-5 mr-2" />
                 Watch 90-sec Tour
               </Button>
@@ -109,15 +79,8 @@ export const HeroSection = () => {
           >
             <div 
               {...cardProps}
-              className="hero-border-glow rounded-2xl overflow-hidden relative"
+              className="rounded-2xl overflow-hidden relative border border-border"
             >
-              <div 
-                className="spotlight-overlay pointer-events-none"
-                style={{
-                  '--x': `${hoverState.x}%`,
-                  '--y': `${hoverState.y}%`,
-                } as React.CSSProperties}
-              />
               <motion.img
                 src={heroImage}
                 alt="Dashboard showing exam simulation interface with analytics and progress tracking"
@@ -127,22 +90,6 @@ export const HeroSection = () => {
               />
             </div>
             
-            {/* Floating elements */}
-            <motion.div
-              className="absolute -top-4 -right-4 glass-strong text-white px-4 py-2 rounded-full font-semibold shadow-lg border border-success/30"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
-              +18% Score
-            </motion.div>
-            
-            <motion.div
-              className="absolute -bottom-4 -left-4 glass-strong text-white px-4 py-2 rounded-full font-semibold shadow-lg border border-primary/30"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            >
-              27k+ Students
-            </motion.div>
           </motion.div>
         </div>
       </div>

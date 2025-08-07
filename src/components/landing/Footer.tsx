@@ -49,7 +49,7 @@ export const Footer = () => {
                 alt="GATE And Tech Logo" 
                 className="h-8 w-8 mr-3"
               />
-              <span className="text-2xl font-black text-white">GATE And Tech</span>
+              <span className="text-2xl font-black text-foreground">GATE And Tech</span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Transforming exam anxiety into focused confidence through adaptive learning and community support.
