@@ -59,7 +59,7 @@ export const HeroSection = () => {
             className="space-y-8"
           >
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight font-display"
+              className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -85,8 +85,7 @@ export const HeroSection = () => {
             >
               <Button 
                 size="lg" 
-                variant="playful"
-                className="px-8 py-6 text-lg transition-all duration-200 hover:scale-105"
+                className="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-6 text-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
               >
                 Get Started Free
               </Button>
