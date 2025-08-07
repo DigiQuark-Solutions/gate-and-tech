@@ -16,14 +16,14 @@ All colors MUST be HSL.
     --surface-dark-2: 215 25% 17%;
     
     /* Primary Vibrant Green Palette */
-    --primary: 142 70% 50%;
-    --primary-dark: 142 70% 40%;
-    --primary-light: 142 70% 60%;
+    --primary: 152 75% 50%;
+    --primary-dark: 152 72% 42%;
+    --primary-light: 152 80% 62%;
     --primary-foreground: 0 0% 100%;
     
     /* Gradient Definitions */
-    --gradient-primary: linear-gradient(135deg, hsl(142 70% 60%), hsl(158 64% 52%));
-    --gradient-primary-hover: linear-gradient(135deg, hsl(142 70% 65%), hsl(158 64% 57%));
+    --gradient-primary: linear-gradient(135deg, hsl(152 80% 60%), hsl(46 100% 62%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(152 82% 65%), hsl(46 100% 67%));
     
     /* Functional Colors */
     --success: 142 71% 45%;
@@ -63,7 +63,7 @@ All colors MUST be HSL.
     --border: var(--gray-3);
     --input: var(--surface-dark-2);
     --ring: var(--primary);
-    --radius: 0.5rem;
+    --radius: 1rem;
     
     /* Animation Variables */
     --glow-primary: 142 70% 50%;
@@ -106,6 +106,10 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  h1, h2, h3 {
+    @apply font-display;
   }
   
   html {
